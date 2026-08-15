@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estructura 4P by Agento — Simulador de Inversión</title>
+<meta name="description" content="Terreno, crédito, proyecto y constructor: simula la inversión total de tu casa con la metodología Estructura 4P by Agento.">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFlElEQVR42rWX30uU6xbHP8/7vDOO4+SPo2AJ3ewgJdpK6GR3gRD7VAYTdSGURrg3SRdRgkQkdNNV4PkHpMsoIoyg7iI8RUIOhUpFbHen5uwBN5G67cc48877POtc2LxHM8fxnN2Ch2GeH2utZ73P97vWUoA4joO1lng8Tm9vL/F4nIqKCkoSBciyX0AphYigUMiXyc+fP5NMJhkeHubp06cUbKK1FkAGBwclm83K95bFxUW5cOGCAPLFNjIwMCAiIsYYyefz4vu+GGP+0uH7vuTzebHWiojI2bNnBRC1fft2mZycJBQKAeA4Dt9TrLUAeDmPH5t/xOnt7SUSiSAiGzZujMEYs6EzjuMgIpRHyzl58iROe3v70oNRakOGRQTXdXFdFxHZkCOFR7pnzx7cioqKko0Xwue6LgDXrl1DRDh+/DiO4wROlBJJpRTRaBRHREoybIxBa43Wmrt373Lo0CH+OTrK6OgoBw4c4N69e8F6IULriYjA+Pi4iIj4vi/W2tXD2ABCDx48kCNHjkhXV5eMjY0F848ePZLDhw9LIpGQhw8fBvPf1Get+L4vIiKPHz+Wog4YY8QaK8lkUrq6uiSRSMj9+/cDA/l8XjzPC/7fuXNH9u3bJ11dXTI1NRVAcB0HkkUd8H1f+vv75caNG6tIpYDpr+X2yIhcuXJlyQG/uANuwJ9rPBSAoaGhJex6HuFwmOfPn3Px4kWuX7/O3NwcfX19wbfXWrNt2za6u7v/S7dFxC3ltVpr8fM+4bIwqVSKnp5uUql/4+U8ZmZmSKfTXL16Fd/3UUrx4sULjh49ysjICM3NzVhr10SGWwr8RIRQOMTCwgKJRILLly8zPDxMZjGD4zhs3bqV1tbWYP/u3btJ//47t27doqWlpagDTklQkSXy6ezspK+vj4MHDzLzxwxa6yXlarWayakpGhoa1r2cu451EEG7mmPHjvH3n37i1KlTAJSVRQiHQlRWVjIxOcGZM2eCm7558wZrDD09PVhr0Vr/bw7YLxR9+vRp3r17x9DQP5ieniYUCpHNZPjt9Wuy2Sw1NTW0trYiVnC0QyKRoKOjIyCxYkzrFgu91pr5+XkmJiaora2lp6c7eJhvUykGBgaIx+O0tLRw4sSJVedLyTHuegmjurqasbGxVeu7du3i5s2bpFIpzp07hzEG3/dxHAelFFrrknKMux4HrA7NUvnV2XmQSCRCXV0d+/fvR2sdGF+eBwp61soNKjmelLZ4G8aYFVApYFophe/7wSdxHCcw5Ps+xhjKysoAyOfzKKWCbFnQY4whHA6vSG5aa8bGxnDlKyYsLN6+fZvG7Y28ffuWH7b9gDGGyclJdu7cyezsLJFIOVVVlXieh6M1f87Pk8lkiMViZDIZ4m1xXv/rNel0mtraWjo6OlZdEsBVrAy1o5Yqlr179xKNRtm8ZTOxWAylFA0NDYTDYbZsaaC8PIJYoSJWged5fPz4kWg0CkA2myW2KcaOHTtobGyksrJyzYprVQQK/tTX1wOwadMmcrkcIkJNzd8QsUEJZ4wll8vhOA5VVVVorVlcXKS6uppsNkt1dfVKQtsIE1prsdYiIrx69YrZ2Vk8L0fey/Ps2TPev3/P9PSvpNNpFhY+kEwmmZ+f58OHD8zNzfHy5UtEJNCxJgrWeu3L55uamnBdl+UNjFKK+vr6IKybNy9FrJAV6+rqiqPpy5qbyWTWLZ/KysqCPY7jrEmtBfIp7CmmV0TIZDI4T548WYXdbyakbxj6ehQ78/WaUorx8XFUU1OTTExM4LouCoVySi/P/6/GxPNobm5ecuj8+fMrWjPjm+/WmhljRESkv79fAAma00uXLkkul/vuzWk2m5XBi4NBc6qWt+ft7bv5+edfaGtrIxaL/aWh//TpU9CeJ5PJAFH/AZhHenVfGa9KAAAAAElFTkSuQmCC">
+<!-- Al publicar en tu dominio: usa el paquete estructura4p_app_assets.zip y pega head-snippet.html aquí (favicons por archivo + Open Graph con URL absoluta) -->
+<style>
+  :root{
+    --ink:#16181d; --paper:#f6f5f2; --card:#ffffff; --line:#e4e2dc;
+    --accent:#1f6f5c; --accent-soft:#e8f2ee; --gold:#b98a2f; --gold-soft:#faf3e3;
+    --blue-soft:#e7edf8; --muted:#8a8f98; --danger:#b3403a;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif; background:var(--paper); color:var(--ink); font-size:14px; line-height:1.45;}
+
+  header{background:var(--ink); color:#fff; padding:26px 34px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .brand{display:flex; align-items:baseline; gap:12px;}
+  .brand h1{font-size:20px; letter-spacing:.34em; font-weight:700;}
+  .brand span{font-size:10px; letter-spacing:.18em; color:#9aa0aa; text-transform:uppercase;}
+  header .sub{font-size:12px; color:#c9cdd4; letter-spacing:.06em;}
+
+  .wrap{max-width:1060px; margin:0 auto; padding:26px 24px 60px;}
+
+  .hero{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:38px 42px 34px; margin-bottom:26px; text-align:center;}
+  .herologo{width:180px; max-width:60%; display:block; margin:0 auto 22px;}
+  .herokicker{font-size:10.5px; letter-spacing:.3em; text-transform:uppercase; color:var(--muted); font-weight:700;}
+  .herotitle{font-size:30px; letter-spacing:.01em; margin-top:6px; font-weight:800;}
+  .herotitle .reg{font-size:14px; vertical-align:super;}
+  .herotag{font-size:15px; color:var(--accent); font-weight:600; margin-top:4px; letter-spacing:.02em;}
+  .herodesc{max-width:680px; margin:14px auto 0; font-size:13.5px; color:#3c4046; line-height:1.65;}
+  .pgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:26px; text-align:left;}
+  @media(max-width:900px){.pgrid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.pgrid{grid-template-columns:1fr;}}
+  .pcard{border:1px solid var(--line); border-radius:12px; padding:16px 16px 14px; background:#fbfaf8;}
+  .pcard .pico{font-size:20px; margin-bottom:8px;}
+  .pcard h3{font-size:13px; letter-spacing:.02em; line-height:1.35; display:flex; align-items:baseline; gap:8px;}
+  .pcard .pnum{flex:none; width:18px; height:18px; border-radius:50%; background:var(--ink); color:#fff; font-size:10.5px; display:inline-flex; align-items:center; justify-content:center; font-weight:700; transform:translateY(2px);}
+  .pcard p{font-size:11.8px; color:#55595f; margin-top:7px; line-height:1.55;}
+  .heroquote{max-width:660px; margin:26px auto 0; padding:16px 22px; background:var(--accent-soft); border:1px solid #cfe3dc; border-radius:12px;}
+  .heroquote .q1{font-size:14px; font-weight:700; color:var(--accent);}
+  .heroquote .q2{font-size:12.8px; color:#2b4c42; margin-top:6px; line-height:1.6;}
+  .herocta{margin-top:24px; display:flex; flex-direction:column; align-items:center; gap:10px;}
+  .ctabtn{display:inline-block; background:var(--ink); color:#fff; text-decoration:none; font-weight:700; font-size:14px; letter-spacing:.05em; padding:13px 30px; border-radius:10px;}
+  .ctabtn:hover{opacity:.85;}
+  .ctanote{font-size:11px; color:var(--muted);}
+  .simhead{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:6px 2px 14px; scroll-margin-top:20px;}
+  .simhead h2{font-size:19px; letter-spacing:.03em;}
+  .simhead span{font-size:11.5px; color:var(--muted);}
+
+  .topgrid{display:grid; grid-template-columns:1fr 1fr 1.4fr; gap:14px; margin-bottom:18px;}
+  @media(max-width:820px){.topgrid{grid-template-columns:1fr;}}
+  .inputcard{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px;}
+  .inputcard label{display:block; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; font-weight:600;}
+  .biginput{display:flex; align-items:baseline; gap:8px;}
+  .biginput input{width:100%; font-size:30px; font-weight:700; border:none; border-bottom:2px solid var(--ink); background:transparent; padding:2px 0 6px; outline:none; font-family:inherit; color:var(--ink);}
+  .biginput input:focus{border-color:var(--accent);}
+  .biginput .unit{font-size:13px; color:var(--muted); white-space:nowrap;}
+  .projcard input{width:100%; font-size:15px; border:none; border-bottom:1px solid var(--line); background:transparent; padding:6px 0; outline:none; font-family:inherit;}
+  .projcard input:focus{border-color:var(--accent);}
+  .projcard .row2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:12px;}
+  .projcard .row2 label{margin-bottom:4px;}
+
+  section.block{background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:16px; overflow:hidden;}
+  .blockhead{display:flex; align-items:center; justify-content:space-between; padding:13px 20px; border-bottom:1px solid var(--line); flex-wrap:wrap; gap:8px;}
+  .blockhead .t{display:flex; align-items:center; gap:12px;}
+  .blockhead .num{width:26px; height:26px; border-radius:50%; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:700;}
+  .blockhead h2{font-size:15px; letter-spacing:.05em;}
+  .blockhead h2 .subt{font-size:11px; color:var(--muted); font-weight:500; letter-spacing:.08em; text-transform:uppercase; margin-left:8px;}
+  .note{margin:12px 20px 4px; padding:10px 14px; background:var(--gold-soft); border:1px solid #e6d3a3; border-radius:10px; font-size:12px; color:#6d5416; line-height:1.5;}
+  .note.info{background:var(--accent-soft); border-color:#cfe3dc; color:#1d4d40;}
+  .subhead{display:flex; align-items:baseline; gap:10px; padding:14px 20px 6px; border-top:1px solid var(--line); margin-top:6px;}
+  .subhead:first-of-type{border-top:none; margin-top:0;}
+  .subhead .subnum{font-size:12px; font-weight:800; color:var(--accent); letter-spacing:.04em;}
+  .subhead .subtitle{font-size:13px; font-weight:700; letter-spacing:.03em;}
+  .subhead .subtitle em{font-style:normal; font-size:10.5px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.1em;}
+  .subhead .subsum{margin-left:auto; font-size:13px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .blockhead .sub-amount{font-weight:700; font-size:15px;}
+  .blockhead .pct{font-size:11px; color:var(--muted); margin-left:10px;}
+
+  table{width:100%; border-collapse:collapse;}
+  th{font-size:10px; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); font-weight:600; background:#fbfaf8;}
+  td{padding:8px 12px; border-bottom:1px solid #f0eee9; vertical-align:middle;}
+  tr:last-child td{border-bottom:none;}
+  td.concept{font-weight:500;}
+  td.concept small{display:block; color:var(--muted); font-weight:400; font-size:11px;}
+  td.unidad{color:var(--muted); font-size:12px; white-space:nowrap;}
+  .cellin{display:flex; align-items:center; gap:4px;}
+  .cellin .pre{color:var(--muted); font-size:12px;}
+  input.num{width:110px; text-align:right; font-family:inherit; font-size:13.5px; padding:6px 8px; border:1px solid var(--line); border-radius:8px; background:#fdfdfc; outline:none; color:var(--ink);}
+  input.num:focus{border-color:var(--accent); background:#fff;}
+  input.num.overridden{border-color:var(--gold); background:var(--gold-soft);}
+  input.num.qty{width:92px;}
+  input.num.pct{width:70px;}
+  td.total{text-align:right; font-weight:600; white-space:nowrap; font-variant-numeric:tabular-nums;}
+  .autobtn{border:none; background:none; color:var(--muted); cursor:pointer; font-size:13px; padding:2px 4px; border-radius:6px; line-height:1;}
+  .autobtn:hover{color:var(--accent); background:var(--accent-soft);}
+  .autobtn.hidden{visibility:hidden;}
+  th.right, td.right{text-align:right;}
+
+  .results{display:grid; grid-template-columns:1.2fr 1fr; gap:14px; margin-top:22px;}
+  @media(max-width:820px){.results{grid-template-columns:1fr;}}
+  .rescard{border-radius:14px; padding:22px 24px;}
+  .rescard.total{background:var(--ink); color:#fff;}
+  .rescard.venta{background:var(--accent-soft); border:1px solid #cfe3dc;}
+  .rescard .lbl{font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.75; font-weight:600;}
+  .rescard .amt{font-size:34px; font-weight:800; margin-top:6px; font-variant-numeric:tabular-nums; letter-spacing:-.01em;}
+  .rescard.venta .amt{color:var(--accent);}
+  .rescard .per{font-size:12.5px; margin-top:8px; opacity:.8;}
+  .util-row{display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px;}
+  .util-row input{width:64px;}
+  .splitbar{margin-top:16px; font-size:11.5px;}
+  .splitbar .row{display:flex; justify-content:space-between; padding:3px 0; opacity:.85;}
+
+  /* módulos opcionales (financiamiento / obra) */
+  .module{background:var(--card); border:1px solid var(--line); border-radius:14px; margin-top:16px; overflow:hidden;}
+  .modhead{display:flex; align-items:center; gap:14px; padding:16px 20px; cursor:pointer; user-select:none;}
+  .modhead:hover{background:#fbfaf8;}
+  .modhead .mico{font-size:18px;}
+  .modhead .mtit{font-weight:700; font-size:15px; letter-spacing:.02em;}
+  .modhead .msub{font-size:11.5px; color:var(--muted);}
+  .modhead .chev{margin-left:auto; color:var(--muted); font-size:13px; transition:transform .18s;}
+  .module.open .chev{transform:rotate(180deg);}
+  .modbody{display:none; border-top:1px solid var(--line); padding:18px 20px 22px;}
+  .module.open .modbody{display:block;}
+
+  .finctrl{display:flex; gap:18px; flex-wrap:wrap; align-items:flex-end; margin-bottom:16px;}
+  .finctrl .fld label{display:block; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:6px;}
+  .chips{display:flex; gap:6px;}
+  .chip{border:1px solid var(--line); background:#fdfdfc; border-radius:9px; padding:9px 14px; font-size:12.5px; font-weight:600; cursor:pointer; font-family:inherit; color:#3c4046;}
+  .chip.on{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .finmeta{font-size:11.5px; color:var(--muted); margin:2px 0 14px;}
+  .finmeta b{color:var(--danger);}
+  .fincards{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+  @media(max-width:820px){.fincards{grid-template-columns:1fr;}}
+  .fincard{border:1px solid var(--line); border-radius:12px; padding:16px 18px; background:#fbfaf8; position:relative;}
+  .fincard.best{border-color:var(--accent); background:var(--accent-soft);}
+  .fincard .plazo{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-weight:700;}
+  .fincard .best-badge{position:absolute; top:12px; right:12px; font-size:9.5px; letter-spacing:.08em; background:var(--accent); color:#fff; padding:3px 8px; border-radius:20px; font-weight:700; text-transform:uppercase;}
+  .fincard .pago{font-size:23px; font-weight:800; margin-top:6px; font-variant-numeric:tabular-nums;}
+  .fincard .pago small{font-size:11px; color:var(--muted); font-weight:500;}
+  .fincard .findet{margin-top:10px; font-size:11.6px; color:#55595f; line-height:1.7;}
+  .fincard .findet .frow{display:flex; justify-content:space-between; gap:8px;}
+  .fincard .findet .frow span:last-child{font-variant-numeric:tabular-nums; font-weight:600; color:var(--ink);}
+  .finfoot{font-size:10.8px; color:var(--muted); margin-top:14px; line-height:1.6;}
+  .amort{margin-top:20px; border-top:1px dashed var(--line); padding-top:16px;}
+  .amorthead{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-bottom:10px;}
+  .amortnote{font-size:11.5px; color:var(--accent); font-weight:600;}
+  .amortwrap{border:1px solid var(--line); border-radius:10px; overflow:hidden;}
+  .amorttable{width:100%; border-collapse:collapse;}
+  .amorttable th{background:var(--ink); color:#fff; font-size:10px; letter-spacing:.1em; text-transform:uppercase; padding:8px 12px; text-align:right; border-bottom:none;}
+  .amorttable th:first-child{text-align:left;}
+  .amorttable td{font-size:12px; padding:6.5px 12px; text-align:right; font-variant-numeric:tabular-nums; border-bottom:1px solid #f0eee9;}
+  .amorttable td:first-child{text-align:left; font-weight:600; color:#3c4046;}
+  .amorttable tr:nth-child(even) td{background:#fbfaf8;}
+  .amorttable tr.trow td{background:var(--accent-soft); font-weight:700; border-top:2px solid var(--accent);}
+  .legends{margin-top:18px; background:#fbfaf8; border:1px solid var(--line); border-radius:10px; padding:14px 18px;}
+  .legends .legtitle{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:8px;}
+  .legends ul{margin:0; padding-left:16px;}
+  .legends li{font-size:10.8px; color:#55595f; line-height:1.6; margin-bottom:5px;}
+
+  /* gantt */
+  .ganttctrl{display:flex; gap:18px; align-items:flex-end; flex-wrap:wrap; margin-bottom:14px;}
+  .gantt{position:relative; margin-top:6px;}
+  .gr{display:grid; grid-template-columns:172px 1fr 96px; gap:10px; align-items:center; padding:3px 0;}
+  .gr .gname{font-size:11.8px; color:#3c4046; text-align:right; line-height:1.25;}
+  .gr .gamt{font-size:11px; color:var(--muted); text-align:right; font-variant-numeric:tabular-nums;}
+  .gtrack{position:relative; height:16px; background:#f1efe9; border-radius:4px;}
+  .gbar{position:absolute; top:1px; bottom:1px; background:var(--accent); border-radius:4px; min-width:5px; cursor:default;}
+  .gbar:hover{background:#175243;}
+  .gruler{display:grid; grid-template-columns:172px 1fr 96px; gap:10px; margin-bottom:6px;}
+  .gruler .rl{position:relative; height:16px;}
+  .gruler .tick{position:absolute; top:0; font-size:9.5px; color:var(--muted); transform:translateX(-50%); white-space:nowrap;}
+  .gline{position:absolute; top:22px; bottom:0; width:1px; background:#e9e6df;}
+  .gtip{position:fixed; z-index:50; background:var(--ink); color:#fff; font-size:11.5px; padding:8px 11px; border-radius:8px; pointer-events:none; display:none; line-height:1.5; max-width:240px;}
+  .gfoot{font-size:10.8px; color:var(--muted); margin-top:12px; line-height:1.6;}
+
+  .actions{display:flex; gap:10px; margin-top:20px; flex-wrap:wrap;}
+  button.act{font-family:inherit; font-size:13px; font-weight:600; letter-spacing:.04em; padding:11px 18px; border-radius:10px; cursor:pointer; border:1px solid var(--ink); background:var(--ink); color:#fff;}
+  button.act.secondary{background:transparent; color:var(--ink);}
+  button.act:hover{opacity:.85;}
+  .hint{font-size:11.5px; color:var(--muted); margin-top:14px;}
+  .hint b{color:var(--gold);}
+
+  footer{max-width:1060px; margin:0 auto; padding:0 24px 40px; font-size:11px; color:var(--muted);}
+
+  @media print{
+    *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    @page{margin:14mm 12mm;}
+    body{background:#fff; font-size:12px;}
+    header{padding:14px 0; background:#fff; color:var(--ink); border-bottom:3px solid var(--ink);}
+    header .sub{color:var(--muted);}
+    .brand span{color:var(--muted);}
+    .wrap{padding:10px 0 0; max-width:100%;}
+    .topgrid{grid-template-columns:1fr 1fr 1.4fr; gap:10px;}
+    .inputcard,.rescard,.fincard,.pcard,.heroquote,.legends,.amortwrap{break-inside:avoid;}
+    section.block,.module{border-radius:6px;}
+    .biginput input,.projcard input,input.num{border:none; background:transparent; padding:0;}
+    input.num{width:auto; text-align:right;}
+    input.num.overridden{background:transparent; border:none;}
+    .autobtn,.actions,.hint,.noprint,.modhead .chev{display:none !important;}
+    .hero{padding:16px 20px; page-break-after:always; border:none;}
+    .herologo{width:150px;}
+    .pgrid{grid-template-columns:repeat(2,1fr);}
+    .rescard.total{background:var(--ink) !important; color:#fff;}
+    .rescard .amt{font-size:26px;}
+    .results{break-inside:avoid;}
+    .module{margin-top:14px;}
+    .module .modbody{border-top:1px solid var(--line);}
+    .modhead{cursor:default;}
+    /* modo por defecto (Ctrl+P): imprime los módulos abiertos */
+    .module:not(.open) .modhead{display:none;}
+    .module.open{page-break-before:always;}
+    /* PDF resumen: sin módulos */
+    body.pdf-basic .module{display:none !important;}
+    /* PDF completo: módulos siempre incluidos, abiertos o no */
+    body.pdf-full .module{page-break-before:always;}
+    body.pdf-full .module .modhead{display:flex !important;}
+    body.pdf-full .module .modbody{display:block !important;}
+    .fincards{grid-template-columns:repeat(3,1fr);}
+    .gbar{background:var(--accent) !important;}
+    .amorttable th{background:var(--ink) !important; color:#fff !important;}
+    .amorttable td{font-size:10.5px; padding:5px 10px;}
+    .gtip{display:none !important;}
+    footer{padding-top:12px; border-top:1px solid var(--line); font-size:9.5px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><h1>AGENTO</h1><span>Capital Partners</span></div>
+  <div class="sub">Simulador de Inversión · Casas Mérida &amp; Provincia</div>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO 4P -->
+  <section class="hero">
+    <img class="herologo" src="data:image/png;base64,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" alt="AGENTO Capital Partners">
+    <div class="herokicker">Metodología</div>
+    <h2 class="herotitle">Estructura 4P by Agento<span class="reg">®</span></h2>
+    <p class="herotag">De terreno a proyecto listo para construir.</p>
+    <p class="herodesc">Un servicio integral donde estructuramos el proyecto residencial de nuestros clientes: te vendemos el terreno, te tramitamos el crédito, te conectamos con el arquitecto ideal y te presentamos al constructor confiable. Todo listo para iniciar obra sin complicaciones.</p>
+
+    <div class="pgrid">
+      <div class="pcard">
+        <div class="pico">🧭</div>
+        <h3><span class="pnum">1</span>Predio Estratégico</h3>
+        <p>Terrenos seleccionados con ubicación privilegiada, servicios y alta plusvalía.</p>
+      </div>
+      <div class="pcard">
+        <div class="pico">💰</div>
+        <h3><span class="pnum">2</span>Préstamo Inteligente</h3>
+        <p>Créditos personalizados —terreno, construcción o ambos— tramitados con bancos o financieras según tu perfil.</p>
+      </div>
+      <div class="pcard">
+        <div class="pico">📐</div>
+        <h3><span class="pnum">3</span>Proyecto Arquitectónico Personalizado</h3>
+        <p>Vinculación con despachos de arquitectura alineados a tu presupuesto y estilo: anteproyecto, renders y proyecto ejecutivo.</p>
+      </div>
+      <div class="pcard">
+        <div class="pico">🧱</div>
+        <h3><span class="pnum">4</span>Proveedor Constructor Confiable</h3>
+        <p>Conexión con constructoras de confianza validadas por Agento, para que inicies tu obra con respaldo sólido.</p>
+      </div>
+    </div>
+
+    <div class="heroquote">
+      <p class="q1">¿Sueñas con construir tu casa, pero no sabes por dónde empezar?</p>
+      <p class="q2">Con <b>Estructura 4P by Agento®</b> te entregamos un proyecto listo para construir: el terreno, el crédito, el diseño y el constructor. <b>Tú solo decides cuándo empezar.</b></p>
+    </div>
+
+    <div class="herocta noprint">
+      <a class="ctabtn" href="#calculadora">Ir al simulador ↓</a>
+      <span class="ctanote">Este simulador de inversión forma parte de la metodología Estructura 4P by Agento®.</span>
+    </div>
+  </section>
+
+  <div class="simhead" id="calculadora">
+    <h2>Simulador de Inversión</h2>
+    <span>Parte de la metodología Estructura 4P by Agento® — paso 1: dimensiona tu predio y tu casa.</span>
+  </div>
+
+  <div class="topgrid">
+    <div class="inputcard">
+      <label>Metros de terreno</label>
+      <div class="biginput"><input type="text" id="in-terreno" inputmode="decimal" value="518.95"><span class="unit">m²</span></div>
+    </div>
+    <div class="inputcard">
+      <label>Metros de construcción</label>
+      <div class="biginput"><input type="text" id="in-construccion" inputmode="decimal" value="441"><span class="unit">m²</span></div>
+    </div>
+    <div class="inputcard projcard">
+      <label>Proyecto / Cliente</label>
+      <input type="text" id="in-proyecto" placeholder="Ej. Casa Lote 50 · Yucatan Village & Resort">
+      <div class="row2">
+        <div><label>Fecha</label><input type="text" id="in-fecha"></div>
+        <div><label>Preparado por</label><input type="text" id="in-autor" value="AGENTO"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1 TERRENO -->
+  <section class="block" id="sec-terreno">
+    <div class="blockhead">
+      <div class="t"><div class="num">1</div><h2>Terreno</h2></div>
+      <div><span class="sub-amount" id="sub-terreno">$0.00</span><span class="pct" id="pct-terreno">0%</span></div>
+    </div>
+    <table>
+      <thead><tr><th style="width:34%">Concepto</th><th>Unidad</th><th class="right">Cantidad</th><th class="right">P.U.</th><th class="right" style="width:18%">Total</th></tr></thead>
+      <tbody id="tb-terreno"></tbody>
+    </table>
+  </section>
+
+  <!-- 2 HARD COST -->
+  <section class="block" id="sec-hard">
+    <div class="blockhead">
+      <div class="t"><div class="num">2</div><h2>Hard Cost</h2></div>
+      <div><span class="sub-amount" id="sub-hard">$0.00</span><span class="pct" id="pct-hard">0%</span></div>
+    </div>
+    <table>
+      <thead><tr><th style="width:34%">Concepto</th><th>Unidad</th><th class="right">Cantidad</th><th class="right">P.U.</th><th class="right" style="width:18%">Total</th></tr></thead>
+      <tbody id="tb-hard"></tbody>
+    </table>
+  </section>
+
+  <!-- 3 SOFT COST (3.1 + 3.2 + 3.3) -->
+  <section class="block" id="sec-soft">
+    <div class="blockhead">
+      <div class="t"><div class="num">3</div><h2>Soft Cost <span class="subt">honorarios · condominio · licencias</span></h2></div>
+      <div><span class="sub-amount" id="sub-soft">$0.00</span><span class="pct" id="pct-soft">0%</span></div>
+    </div>
+
+    <div class="subhead"><span class="subnum">3.1</span><span class="subtitle">Honorarios de Diseño</span><span class="subsum" id="sub-soft1">$0.00</span></div>
+    <table>
+      <thead><tr><th style="width:34%">Concepto</th><th>Unidad</th><th class="right">Cantidad</th><th class="right">P.U.</th><th class="right" style="width:18%">Total</th></tr></thead>
+      <tbody id="tb-soft1"></tbody>
+    </table>
+
+    <div class="subhead"><span class="subnum">3.2</span><span class="subtitle">Trámites del Condominio <em>· estimado Yucatán Country Club</em></span><span class="subsum" id="sub-condo">$0.00</span></div>
+    <div class="note">⚠ Costos <b>estimados con referencia al Yucatán Country Club</b>. Dependen mucho del condominio donde vas a desarrollar (comité, reglamento y tabulador propios) — <b>solicita a la administración de tu condominio los costos vigentes</b> antes de cerrar números.</div>
+    <table>
+      <thead><tr><th style="width:34%">Concepto</th><th>Unidad</th><th class="right">Cantidad</th><th class="right">P.U.</th><th class="right" style="width:18%">Total</th></tr></thead>
+      <tbody id="tb-condo"></tbody>
+    </table>
+
+    <div class="subhead"><span class="subnum">3.3</span><span class="subtitle">Licencias y Permisos <em>· Municipio de Mérida</em></span><span class="subsum" id="sub-merida">$0.00</span></div>
+    <div class="note info">Trámites ante el Ayuntamiento de Mérida (Portal Ciudadano, 100% en línea). La licencia de casa habitación requiere firma de perito (DRO/PCM), resuelve en ~3 días hábiles y tiene vigencia de ~2 años. Tarifas conforme a la Ley de Hacienda del Municipio de Mérida vigente; los P.U. cargados son los costos reales actuales del modelo AGENTO.</div>
+    <table>
+      <thead><tr><th style="width:34%">Concepto</th><th>Unidad</th><th class="right">Cantidad</th><th class="right">P.U.</th><th class="right" style="width:18%">Total</th></tr></thead>
+      <tbody id="tb-merida"></tbody>
+    </table>
+  </section>
+
+  <div class="results">
+    <div class="rescard total">
+      <div class="lbl">Inversión total</div>
+      <div class="amt" id="res-total">$0.00</div>
+      <div class="per" id="res-perm2">— por m² de construcción</div>
+      <div class="splitbar" id="res-split"></div>
+    </div>
+    <div class="rescard venta">
+      <div class="lbl">Precio de venta sugerido</div>
+      <div class="amt" id="res-venta">$0.00</div>
+      <div class="util-row">Utilidad&nbsp;<input type="text" class="num pct" id="in-utilidad" inputmode="decimal" value="25">%
+      </div>
+      <div class="per" id="res-utilidad-monto"></div>
+    </div>
+  </div>
+
+  <!-- FINANCIAMIENTO -->
+  <section class="module" id="mod-fin">
+    <div class="modhead" data-toggle="mod-fin">
+      <span class="mico">💳</span>
+      <div><div class="mtit">¿Necesitas financiamiento?</div><div class="msub">Crédito de construcción Scotiabank · pago creciente (Valora) o mensualidad fija · 10, 15 o 20 años · solo construcción o con terreno</div></div>
+      <span class="chev">▼</span>
+    </div>
+    <div class="modbody">
+      <div class="finctrl">
+        <div class="fld">
+          <label>¿Qué quieres financiar?</label>
+          <div class="chips">
+            <button class="chip on" id="chip-obra" type="button">Solo construcción</button>
+            <button class="chip" id="chip-ambos" type="button">Construcción + terreno</button>
+          </div>
+        </div>
+        <div class="fld">
+          <label>Esquema de pago</label>
+          <div class="chips">
+            <button class="chip on" id="chip-valora" type="button">Valora · pago creciente</button>
+            <button class="chip" id="chip-fija" type="button">Tradicional · mensualidad fija</button>
+          </div>
+        </div>
+        <div class="fld">
+          <label>Monto a financiar</label>
+          <div class="cellin"><span class="pre">$</span><input class="num" id="fin-monto" inputmode="decimal" style="width:150px"><button class="autobtn hidden" id="fin-auto" title="Volver a cálculo automático" type="button">↺</button></div>
+        </div>
+      </div>
+      <div class="finmeta" id="fin-meta"></div>
+      <div class="fincards" id="fin-cards"></div>
+      <div class="amort" id="amort-block">
+        <div class="amorthead">
+          <div class="fld">
+            <label>Tabla de amortización — elige el plazo</label>
+            <div class="chips" id="amort-chips">
+              <button class="chip" data-plazo="10" type="button">10 años</button>
+              <button class="chip" data-plazo="15" type="button">15 años</button>
+              <button class="chip on" data-plazo="20" type="button">20 años</button>
+            </div>
+          </div>
+          <div class="amortnote" id="amort-note"></div>
+        </div>
+        <div class="amortwrap"><table class="amorttable" id="amort-table"></table></div>
+      </div>
+      <div class="legends">
+        <div class="legtitle">Leyendas del crédito</div>
+        <ul>
+          <li>Cifras informativas con base en el simulador de crédito hipotecario <b>Scotiabank</b> (v2025.04), en sus dos esquemas: <b>Valora</b> — pago inicial menor con incremento anual de 2.6% y tasa desde 9.75% y hasta 11.75% según cumplimiento del programa — y <b>Tradicional (Pagos Oportunos)</b> — mensualidad fija durante todo el plazo, con tasa fija de 10.55% a 10 años, 11.80% a 15 años y 10.86% a 20 años, susceptible de disminución por pagos puntuales conforme al programa. En ambos: aforo máximo 80% del valor proyectado, comisión por apertura y por pagos anticipados de $0 y avalúo conforme al tabulador del banco.</li>
+          <li>La mensualidad mostrada incluye una estimación de seguros de vida y de daños; la tabla de amortización considera únicamente el pago del crédito, sin seguros.</li>
+          <li>No se incluyen los gastos notariales, los cuales se pagan al momento de la firma del crédito.</li>
+          <li>El crédito solicitado dependerá de la capacidad de pago de cada cliente; los ingresos a comprobar se estiman en 2 veces el pago mensual del crédito.</li>
+          <li>La institución financiera se reserva el derecho de solicitar información adicional y/o restringir parámetros de enganche, monto, plazo o tasa en función de las características del solicitante y del inmueble.</li>
+          <li>Para el esquema "Valora" se deberá cumplir con las reglas establecidas en el programa para la disminución de la tasa de interés. En caso de aplicar, las comisiones por pagos anticipados causan IVA.</li>
+          <li>Esta simulación tiene carácter exclusivamente informativo, puede cambiar sin previo aviso y <b>no implica que el crédito haya sido autorizado</b> ni establece obligación alguna para la institución financiera ni para Agento. Agento te acompaña en la gestión del crédito como parte de la metodología Estructura 4P (P2: Préstamo Inteligente).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMA DE OBRA -->
+  <section class="module" id="mod-obra">
+    <div class="modhead" data-toggle="mod-obra">
+      <span class="mico">📅</span>
+      <div><div class="mtit">Tiempos de obra</div><div class="msub">Programa estimado por etapas, con el peso de cada partida en tu presupuesto</div></div>
+      <span class="chev">▼</span>
+    </div>
+    <div class="modbody">
+      <div class="ganttctrl">
+        <div class="fld">
+          <label style="display:block; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:6px;">Duración estimada de obra</label>
+          <div class="cellin"><input class="num" id="obra-meses" inputmode="decimal" value="12" style="width:70px"><span class="pre">meses</span></div>
+        </div>
+      </div>
+      <div class="gantt" id="gantt"></div>
+      <p class="gfoot">Distribución basada en el programa de obra paramétrico de <b>vivienda alta residencial</b> (Presupuesto y Programa de Obra): cada barra es una etapa, su monto es el porcentaje que esa partida representa del Hard Cost. Los tiempos se escalan a la duración que elijas y varían según constructora, clima y suministros — el constructor asignado entrega el programa definitivo (P4: Proveedor Constructor Confiable).</p>
+    </div>
+  </section>
+  <div class="gtip" id="gtip"></div>
+
+  <div class="actions">
+    <button class="act" id="btn-pdf-basic" type="button">📄 Descargar PDF — resumen de inversión</button>
+    <button class="act" id="btn-pdf-full" type="button">📄 Descargar PDF — con financiamiento y tiempos de obra</button>
+    <button class="act secondary" id="btn-reset">Restablecer valores del modelo</button>
+  </div>
+  <p class="hint">El <b>PDF resumen</b> incluye la portada 4P y el desglose de inversión. El <b>PDF completo</b> agrega el financiamiento (plazos, tabla de amortización y leyendas del crédito) y el programa de obra. Las cantidades marcadas en <b>ámbar</b> fueron editadas a mano; el botón ↺ regresa una celda al cálculo automático. Todos los P.U. son editables — los cambios solo viven en esta pantalla.</p>
+
+</div>
+
+<footer id="disclaimer">Modelo de cálculos <b>AGENTO Capital Partners</b>. Todas las cifras son estimadas y tienen fines exclusivamente informativos y de referencia: cada concepto deberá cotizarse con el área correspondiente (institución financiera, notaría, municipio, administración del condominio, despacho de arquitectura y constructora). Este documento sirve como referencia para tomar una decisión y no constituye una oferta, un presupuesto de obra, una cotización formal ni la autorización de un crédito.</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------- modelo de partidas (defaults = hoja AGENTO) ----------
+  // qty: "terreno" | "construccion" | "uno" | number (manual default)
+  // special: "escrituracion" => total = pu% * (terreno.m2 * pu_adquisicion)
+  const DEF = {
+    terreno: [
+      {id:"adq",   label:"Adquisición", unidad:"m2", qty:"terreno", pu:8671},
+      {id:"escr",  label:"Gastos Escrituración (Aprox)", note:"porcentaje sobre la adquisición", unidad:"%", qty:"pct", pu:5.0, special:"escrituracion"},
+    ],
+    hard: [
+      {id:"par1",  label:"Costo Paramétrico 1", note:"Residencial Premium", unidad:"m2", qty:"construccion", pu:20000},
+      {id:"par2",  label:"Costo Paramétrico 2", note:"segunda calidad / áreas exteriores", unidad:"m2", qty:0, pu:10000},
+      {id:"cocina",label:"Cocina Integral Residencial (Aprox)", unidad:"Lote", qty:"uno", pu:0},
+      {id:"alberca",label:"Alberca, Jacuzzi y Equipo", unidad:"Lote", qty:"uno", pu:0},
+    ],
+    soft1: [
+      {id:"proy",  label:"Proyecto Arquitectónico", unidad:"m2", qty:"construccion", pu:500},
+      {id:"calc",  label:"Cálculo Estructural", note:"si no viene incluido en el proyecto", unidad:"m2", qty:0, pu:35},
+      {id:"otros", label:"Otros Gastos (Imprevistos)", unidad:"Lote", qty:"uno", pu:50000},
+    ],
+    condo: [
+      {id:"comite",label:"Aprobación Proyecto Arquitectónico / Cuota de Revisión Comité", note:"estimado YCC — confirmar con la administración", unidad:"Lote", qty:"uno", pu:30000},
+      {id:"agua",  label:"Toma de Agua u Otro", note:"estimado YCC — conexión a red interna del condominio", unidad:"Lote", qty:"uno", pu:40000},
+      {id:"deposito",label:"Depósito en Garantía / Fianza de Obra", note:"muchos condominios lo exigen; suele ser reembolsable — solicitar monto", unidad:"Lote", qty:"uno", pu:0},
+      {id:"cuotaobra",label:"Cuotas de Obra / Accesos de Personal", note:"si el condominio cobra por mes de obra — solicitar tarifa", unidad:"Lote", qty:"uno", pu:0},
+    ],
+    merida: [
+      {id:"ingr",  label:"Ingreso de licencia (Pago Derechos) + Ploteo de Planos", unidad:"Lote", qty:"uno", pu:1000},
+      {id:"lic",   label:"Licencia de Construcción (Costo Aproximado)", unidad:"m2", qty:"construccion", pu:185},
+      {id:"dro",   label:"Firma DRO", note:"responsiva del perito para la licencia", unidad:"m2", qty:"construccion", pu:30},
+      {id:"ttram", label:"Trámite de Terminación de Obra", unidad:"Lote", qty:"uno", pu:3500},
+      {id:"tderec",label:"Terminación de Obra (Pago Derechos)", unidad:"Lote", qty:"uno", pu:4000},
+      {id:"usosuelo", label:"Uso de Suelo / Factibilidad (si aplica)", note:"vivienda unifamiliar normalmente no lo requiere", unidad:"Lote", qty:"uno", pu:0},
+    ],
+  };
+  const SECTIONS = ["terreno","hard","soft1","condo","merida"];
+
+  const state = { rows:{}, overrides:{} }; // overrides[id] = manual qty
+  let puState = {};                        // puState[id] = current pu
+
+  const fmt = new Intl.NumberFormat("es-MX",{style:"currency",currency:"MXN",minimumFractionDigits:2,maximumFractionDigits:2});
+  const fmtN = new Intl.NumberFormat("es-MX",{maximumFractionDigits:2});
+  const money = v => fmt.format(v||0);
+  function parseNum(s){
+    if(typeof s === "number") return s;
+    if(!s) return 0;
+    const clean = String(s).replace(/[^0-9.\-]/g,"");
+    const v = parseFloat(clean);
+    return isFinite(v) ? v : 0;
+  }
+  const $ = id => document.getElementById(id);
+
+  function terrenoM2(){ return parseNum($("in-terreno").value); }
+  function construccionM2(){ return parseNum($("in-construccion").value); }
+
+  function autoQty(row){
+    if(row.qty === "terreno") return terrenoM2();
+    if(row.qty === "construccion") return construccionM2();
+    if(row.qty === "uno") return 1;
+    if(row.qty === "pct") return 1;
+    return row.qty; // manual default numérico
+  }
+  function currentQty(row){
+    return (row.id in state.overrides) ? state.overrides[row.id] : autoQty(row);
+  }
+  function rowTotal(row){
+    const pu = puState[row.id] || 0;
+    if(row.special === "escrituracion"){
+      const adq = DEF.terreno[0];
+      const base = currentQty(adq) * (puState["adq"]||0);
+      return (pu/100) * base;
+    }
+    return currentQty(row) * pu;
+  }
+
+  // ---------- render de tablas ----------
+  function buildRows(sectionKey, tbodyId){
+    const tb = $(tbodyId);
+    DEF[sectionKey].forEach(row=>{
+      puState[row.id] = row.pu;
+      const tr = document.createElement("tr");
+
+      const tdC = document.createElement("td");
+      tdC.className = "concept";
+      tdC.innerHTML = row.label + (row.note ? "<small>"+row.note+"</small>" : "");
+      tr.appendChild(tdC);
+
+      const tdU = document.createElement("td");
+      tdU.className = "unidad"; tdU.textContent = row.unidad;
+      tr.appendChild(tdU);
+
+      // cantidad
+      const tdQ = document.createElement("td"); tdQ.className="right";
+      const wrapQ = document.createElement("div"); wrapQ.className="cellin"; wrapQ.style.justifyContent="flex-end";
+      const inQ = document.createElement("input");
+      inQ.className = "num qty"; inQ.inputMode="decimal"; inQ.id = "qty-"+row.id;
+      const rst = document.createElement("button");
+      rst.className = "autobtn hidden"; rst.title = "Volver a cálculo automático"; rst.textContent = "↺";
+      if(row.special === "escrituracion"){ inQ.value = "—"; inQ.disabled = true; inQ.style.opacity=".45"; }
+      inQ.addEventListener("input", ()=>{
+        state.overrides[row.id] = parseNum(inQ.value);
+        inQ.classList.add("overridden"); rst.classList.remove("hidden");
+        recalc();
+      });
+      rst.addEventListener("click", ()=>{
+        delete state.overrides[row.id];
+        inQ.classList.remove("overridden"); rst.classList.add("hidden");
+        recalc(true);
+      });
+      wrapQ.appendChild(rst); wrapQ.appendChild(inQ);
+      tdQ.appendChild(wrapQ); tr.appendChild(tdQ);
+
+      // P.U.
+      const tdP = document.createElement("td"); tdP.className="right";
+      const wrapP = document.createElement("div"); wrapP.className="cellin"; wrapP.style.justifyContent="flex-end";
+      const pre = document.createElement("span"); pre.className="pre"; pre.textContent = row.special==="escrituracion" ? "" : "$";
+      const inP = document.createElement("input");
+      inP.className="num"; inP.inputMode="decimal"; inP.id = "pu-"+row.id;
+      inP.value = fmtN.format(row.pu);
+      if(row.special==="escrituracion"){ inP.classList.add("pct"); }
+      const suf = document.createElement("span"); suf.className="pre"; suf.textContent = row.special==="escrituracion" ? "%" : "";
+      inP.addEventListener("input", ()=>{ puState[row.id] = parseNum(inP.value); recalc(); });
+      wrapP.appendChild(pre); wrapP.appendChild(inP); if(suf.textContent) wrapP.appendChild(suf);
+      tdP.appendChild(wrapP); tr.appendChild(tdP);
+
+      const tdT = document.createElement("td");
+      tdT.className = "total"; tdT.id = "tot-"+row.id; tdT.textContent = "$0.00";
+      tr.appendChild(tdT);
+
+      tb.appendChild(tr);
+      state.rows[row.id] = row;
+    });
+  }
+
+  // ---------- cálculo ----------
+  function recalc(refreshQtyInputs){
+    let subs = {terreno:0, hard:0, soft1:0, condo:0, merida:0};
+    SECTIONS.forEach(sec=>{
+      DEF[sec].forEach(row=>{
+        const t = rowTotal(row);
+        subs[sec] += t;
+        $("tot-"+row.id).textContent = money(t);
+        const inQ = $("qty-"+row.id);
+        if(!inQ.disabled && !(row.id in state.overrides) && (refreshQtyInputs || document.activeElement !== inQ)){
+          inQ.value = fmtN.format(autoQty(row));
+        }
+      });
+    });
+    const softTotal = subs.soft1 + subs.condo + subs.merida;
+    const total = subs.terreno + subs.hard + softTotal;
+    const pct = v => total>0 ? (100*v/total).toFixed(2)+"%" : "0%";
+    $("sub-terreno").textContent = money(subs.terreno); $("pct-terreno").textContent = pct(subs.terreno);
+    $("sub-hard").textContent = money(subs.hard);       $("pct-hard").textContent = pct(subs.hard);
+    $("sub-soft").textContent = money(softTotal);       $("pct-soft").textContent = pct(softTotal);
+    $("sub-soft1").textContent = money(subs.soft1);
+    $("sub-condo").textContent = money(subs.condo);
+    $("sub-merida").textContent = money(subs.merida);
+
+    $("res-total").textContent = money(total);
+    const m2c = construccionM2();
+    $("res-perm2").textContent = m2c>0 ? money(total/m2c)+" por m² de construcción" : "—";
+
+    $("res-split").innerHTML =
+      '<div class="row"><span>Terreno</span><span>'+pct(subs.terreno)+'</span></div>'+
+      '<div class="row"><span>Hard Cost</span><span>'+pct(subs.hard)+'</span></div>'+
+      '<div class="row"><span>Soft Cost</span><span>'+pct(softTotal)+'</span></div>'+
+      '<div class="row" style="padding-left:14px"><span>3.1 Honorarios</span><span>'+pct(subs.soft1)+'</span></div>'+
+      '<div class="row" style="padding-left:14px"><span>3.2 Condominio (est. YCC)</span><span>'+pct(subs.condo)+'</span></div>'+
+      '<div class="row" style="padding-left:14px"><span>3.3 Licencias Mérida</span><span>'+pct(subs.merida)+'</span></div>';
+
+    const u = parseNum($("in-utilidad").value)/100;
+    const venta = total * (1+u);
+    $("res-venta").textContent = money(venta);
+    $("res-utilidad-monto").textContent = "Utilidad estimada: " + money(venta-total);
+
+    lastCalc = {
+      terreno: rowTotal(DEF.terreno[0]),          // valor del terreno (adquisición)
+      obra: subs.hard + softTotal,                 // presupuesto de obra + soft
+      hard: subs.hard,
+      total
+    };
+    updateFin();
+    updateGantt();
+  }
+
+  // ---------- financiamiento (Scotiabank Valora) ----------
+  let lastCalc = {terreno:0, obra:0, hard:0, total:0};
+  let finMode = "obra";           // "obra" | "ambos"
+  let finOverride = null;         // monto manual
+  let esqMode = "valora";         // "valora" | "fija"
+  // Esquemas del simulador Scotiabank: Valora (pago inicial menor, crece 2.6% anual)
+  // y Pagos Oportunos (mensualidad fija tradicional), pago por millar y tasa por plazo.
+  const ESQ = {
+    valora: { ppm:{10:12.12, 15:9.64, 20:8.54}, tasa:{10:0.0975, 15:0.0975, 20:0.0975}, inc:1.026,
+              tasaTxt:()=> "desde 9.75%", pagoTxt:"/mes inicial*", nota:"El pago crece 2.6% cada año" },
+    fija:   { ppm:{10:13.70, 15:11.47, 20:10.57}, tasa:{10:0.1055, 15:0.1180, 20:0.1086}, inc:1,
+              tasaTxt:(p)=> (100*ESQ.fija.tasa[p]).toFixed(2)+"% fija", pagoTxt:"/mes fijo*", nota:"La mensualidad no cambia en todo el plazo" },
+  };
+  const PPM = ESQ.valora.ppm;     // compatibilidad
+  const VIDA = 0.0006, DANOS = 0.00031, AFORO = 0.8;
+
+  function finAutoMonto(){
+    const deseado = finMode === "obra" ? lastCalc.obra : (lastCalc.obra + lastCalc.terreno);
+    const tope = AFORO * (lastCalc.terreno + lastCalc.obra);   // 80% del valor proyectado
+    return {monto: Math.min(deseado, tope), tope, capped: deseado > tope};
+  }
+  function updateFin(){
+    const a = finAutoMonto();
+    const monto = finOverride !== null ? finOverride : a.monto;
+    const inM = $("fin-monto");
+    if(finOverride === null && document.activeElement !== inM) inM.value = fmtN.format(Math.round(monto));
+    const valorProy = lastCalc.terreno + lastCalc.obra;
+    const capital = Math.max(0, valorProy - monto);
+    const capPct = valorProy > 0 ? Math.round(100*capital/valorProy) : 0;
+    let capitalTxt;
+    if(finMode === "obra" && Math.abs(capital - lastCalc.terreno) < 1){
+      capitalTxt = "Tu aportación: el terreno, "+money(capital)+" — el banco financia la construcción completa";
+    } else {
+      capitalTxt = "Capital propio requerido ("+capPct+"% del valor proyectado): "+money(capital) + (finMode==="obra" ? " — incluye tu terreno de "+money(lastCalc.terreno) : "");
+    }
+    const softT = lastCalc.obra - lastCalc.hard;
+    let compo = finMode === "obra"
+      ? "Monto a financiar = Hard Cost "+money(lastCalc.hard)+" + Soft Cost "+money(softT)+" = <b style='color:var(--ink)'>"+money(lastCalc.obra)+"</b>"
+      : "Monto a financiar = Hard Cost "+money(lastCalc.hard)+" + Soft Cost "+money(softT)+" + Terreno "+money(lastCalc.terreno)+" = "+money(lastCalc.obra+lastCalc.terreno)+(a.capped ? " → ajustado al aforo 80%: <b style='color:var(--ink)'>"+money(a.tope)+"</b>" : "");
+    let meta = compo+"<br>Valor proyectado (terreno + construcción): "+money(valorProy)+" · Crédito máximo (aforo 80%): "+money(a.tope)+" · "+capitalTxt;
+    if(finOverride === null && a.capped) meta += " · <b>El monto se ajustó al tope del 80%.</b>";
+    if(monto > a.tope) meta += " · <b>Excede el aforo máximo del banco (80%).</b>";
+    meta += "<br>Nota: los gastos de escrituración del terreno y los trámites se cubren aparte con recursos propios.";
+    $("fin-meta").innerHTML = meta;
+
+    finMonto = monto;
+    const danos = lastCalc.obra * DANOS, vida = monto * VIDA;
+    const E = ESQ[esqMode];
+    $("fin-cards").innerHTML = [10,15,20].map(p=>{
+      const pago = monto/1000*E.ppm[p];
+      const tot = pago + vida + danos;
+      const best = p===20;
+      return '<div class="fincard'+(best?' best':'')+'">'+
+        (best?'<span class="best-badge">Pago más bajo</span>':'')+
+        '<div class="plazo">Plazo '+p+' años</div>'+
+        '<div class="pago">'+money(tot)+'<small> '+E.pagoTxt+'</small></div>'+
+        '<div class="findet">'+
+          '<div class="frow"><span>Pago del crédito</span><span>'+money(pago)+'</span></div>'+
+          '<div class="frow"><span>Seguros vida + daños</span><span>'+money(vida+danos)+'</span></div>'+
+          '<div class="frow"><span>Ingresos a comprobar</span><span>'+money(pago*2)+'</span></div>'+
+          '<div class="frow"><span>Tasa</span><span>'+E.tasaTxt(p)+'</span></div>'+
+        '</div></div>';
+    }).join("") + '<div style="grid-column:1/-1; font-size:11px; color:var(--muted); margin-top:2px;">'+E.nota+'.</div>';
+    updateAmort();
+  }
+
+  // ---------- tabla de amortización (Valora: pago creciente 2.6% anual, tasa 9.75%) ----------
+  let finMonto = 0, amortPlazo = 20;
+  function updateAmort(){
+    const tbl = $("amort-table"), note = $("amort-note");
+    if(!finMonto || finMonto <= 0){ tbl.innerHTML=""; note.textContent=""; return; }
+    const E = ESQ[esqMode];
+    const r = E.tasa[amortPlazo]/12, pago0 = finMonto/1000*E.ppm[amortPlazo];
+    let saldo = finMonto, totInt = 0, totPag = 0, payoffMes = null, rows = [];
+    for(let y=1; y<=amortPlazo && saldo>0.01; y++){
+      const pago = pago0*Math.pow(E.inc, y-1);
+      let intY=0, capY=0;
+      for(let k=0; k<12 && saldo>0.01; k++){
+        const int = saldo*r;
+        const cap = Math.min(Math.max(pago-int,0), saldo);
+        saldo -= cap; intY += int; capY += cap; totInt += int; totPag += int+cap;
+        if(saldo<=0.01) payoffMes = (y-1)*12+k+1;
+      }
+      rows.push([y, pago, intY, capY, Math.max(saldo,0)]);
+    }
+    tbl.innerHTML = '<tr><th>Año</th><th>Pago mensual*</th><th>Interés del año</th><th>Capital amortizado</th><th>Saldo final</th></tr>'+
+      rows.map(rw=>'<tr><td>Año '+rw[0]+'</td><td>'+money(rw[1])+'</td><td>'+money(rw[2])+'</td><td>'+money(rw[3])+'</td><td>'+money(rw[4])+'</td></tr>').join("")+
+      '<tr class="trow"><td>Total</td><td>—</td><td>'+money(totInt)+'</td><td>'+money(finMonto)+'</td><td>'+money(totPag)+' pagado</td></tr>';
+    if(esqMode === "valora"){
+      note.textContent = payoffMes && payoffMes < amortPlazo*12
+        ? "Esquema Valora: con el incremento anual del 2.6%, el crédito se liquida anticipadamente: ≈ mes "+payoffMes+" de "+(amortPlazo*12)+"."
+        : "";
+    } else {
+      note.textContent = payoffMes && payoffMes < amortPlazo*12 - 6
+        ? "Esquema tradicional: mensualidad fija; con pagos puntuales se liquida ≈ mes "+payoffMes+" de "+(amortPlazo*12)+"."
+        : "Esquema tradicional: la mensualidad es fija durante todo el plazo.";
+    }
+  }
+
+  // ---------- programa de obra (gantt) ----------
+  // [nombre, semana inicio, semanas, % del presupuesto] — programa paramétrico vivienda alta residencial (72 semanas base)
+  const FASES = [
+    ["Cimentación",            1, 6, 0.090076],
+    ["Estructura de concreto", 7, 8, 0.116832],
+    ["Albañilería",           15, 4, 0.056551],
+    ["Instalación hidráulica",19, 1, 0.018846],
+    ["Instalación sanitaria", 20, 1, 0.013117],
+    ["Instalación eléctrica", 21, 1, 0.016862],
+    ["Instalación de gas",    22, 1, 0.001022],
+    ["Acabados interiores",   23,26, 0.358439],
+    ["Acabados exteriores",   49, 7, 0.091001],
+    ["Accesos",               56, 1, 0.018155],
+    ["Cancelería",            57, 2, 0.030658],
+    ["Mobiliario fijo",       59, 5, 0.063925],
+    ["Guarda",                64, 4, 0.062100],
+    ["Equipo",                68, 1, 0.001535],
+    ["Accesorias",            69, 4, 0.055436],
+  ];
+  const BASEW = 72;
+  const PSUM = FASES.reduce((a,f)=>a+f[3],0);   // normalizar a 100%
+  const gtip = () => $("gtip");
+
+  function updateGantt(){
+    const meses = Math.max(1, parseNum($("obra-meses").value) || 12);
+    const f = (meses*4.333)/BASEW;
+    const ticks = [];
+    const step = meses > 18 ? 3 : (meses > 9 ? 2 : 1);
+    for(let m=step; m<=meses; m+=step) ticks.push(m);
+    let html = '<div class="gruler"><div></div><div class="rl">'+
+      ticks.map(m=>'<span class="tick" style="left:'+(100*m/meses)+'%">mes '+m+'</span>').join("")+
+      '</div><div></div></div>';
+    html += ticks.map(m=>'<div class="gline" style="left:calc(182px + (100% - 298px)*'+(m/meses)+')"></div>').join("");
+    html += FASES.map((fase,i)=>{
+      const pctN = fase[3]/PSUM;
+      const montoF = pctN * lastCalc.hard;
+      const left = 100*(fase[1]-1)/BASEW, width = 100*fase[2]/BASEW;
+      const sem = Math.max(1, Math.round(fase[2]*f));
+      return '<div class="gr">'+
+        '<div class="gname">'+fase[0]+'</div>'+
+        '<div class="gtrack"><div class="gbar" style="left:'+left+'%;width:'+width+'%" data-i="'+i+'" data-sem="'+sem+'" data-monto="'+montoF+'" data-pct="'+(100*pctN).toFixed(1)+'"></div></div>'+
+        '<div class="gamt">'+(100*pctN).toFixed(1)+'% · '+fmt.format(montoF).replace(/\.\d\d$/,"")+'</div>'+
+      '</div>';
+    }).join("");
+    $("gantt").innerHTML = html;
+    $("gantt").querySelectorAll(".gbar").forEach(bar=>{
+      bar.addEventListener("mousemove", e=>{
+        const t = gtip(); const i = +bar.dataset.i;
+        t.innerHTML = '<b>'+FASES[i][0]+'</b><br>'+bar.dataset.pct+'% del presupuesto · '+fmt.format(+bar.dataset.monto).replace(/\.\d\d$/,"")+'<br>≈ '+bar.dataset.sem+' semana'+(bar.dataset.sem>1?'s':'');
+        t.style.display = 'block';
+        t.style.left = Math.min(e.clientX+14, window.innerWidth-250)+'px';
+        t.style.top = (e.clientY+16)+'px';
+      });
+      bar.addEventListener("mouseleave", ()=>{ gtip().style.display='none'; });
+    });
+  }
+
+  // ---------- init ----------
+  buildRows("terreno","tb-terreno");
+  buildRows("hard","tb-hard");
+  buildRows("soft1","tb-soft1");
+  buildRows("condo","tb-condo");
+  buildRows("merida","tb-merida");
+
+  ["in-terreno","in-construccion","in-utilidad"].forEach(id=>{
+    $(id).addEventListener("input", ()=>recalc());
+  });
+
+  $("btn-reset").addEventListener("click", ()=>{
+    state.overrides = {};
+    SECTIONS.forEach(sec=>DEF[sec].forEach(row=>{
+      puState[row.id] = row.pu;
+      const inP = $("pu-"+row.id); inP.value = fmtN.format(row.pu);
+      const inQ = $("qty-"+row.id);
+      inQ.classList.remove("overridden");
+      const rst = inQ.parentElement.querySelector(".autobtn"); if(rst) rst.classList.add("hidden");
+    }));
+    $("in-utilidad").value = "25";
+    recalc(true);
+  });
+
+  // descarga de PDF (resumen / completo)
+  function downloadPDF(mode){
+    document.body.classList.add(mode === "full" ? "pdf-full" : "pdf-basic");
+    const clean = ()=>{ document.body.classList.remove("pdf-full","pdf-basic"); window.removeEventListener("afterprint", clean); };
+    window.addEventListener("afterprint", clean);
+    window.print();
+    setTimeout(clean, 3000);
+  }
+  $("btn-pdf-basic").addEventListener("click", ()=>downloadPDF("basic"));
+  $("btn-pdf-full").addEventListener("click", ()=>downloadPDF("full"));
+
+  // toggles de módulos
+  document.querySelectorAll(".modhead").forEach(h=>{
+    h.addEventListener("click", ()=> $(h.dataset.toggle).classList.toggle("open"));
+  });
+  // controles de financiamiento
+  $("chip-valora").addEventListener("click", ()=>{ esqMode="valora"; $("chip-valora").classList.add("on"); $("chip-fija").classList.remove("on"); updateFin(); });
+  $("chip-fija").addEventListener("click", ()=>{ esqMode="fija"; $("chip-fija").classList.add("on"); $("chip-valora").classList.remove("on"); updateFin(); });
+  $("chip-obra").addEventListener("click", ()=>{ finMode="obra"; finOverride=null; $("fin-auto").classList.add("hidden"); $("fin-monto").classList.remove("overridden"); $("chip-obra").classList.add("on"); $("chip-ambos").classList.remove("on"); updateFin(); });
+  $("chip-ambos").addEventListener("click", ()=>{ finMode="ambos"; finOverride=null; $("fin-auto").classList.add("hidden"); $("fin-monto").classList.remove("overridden"); $("chip-ambos").classList.add("on"); $("chip-obra").classList.remove("on"); updateFin(); });
+  $("fin-monto").addEventListener("input", ()=>{ finOverride = parseNum($("fin-monto").value); $("fin-monto").classList.add("overridden"); $("fin-auto").classList.remove("hidden"); updateFin(); });
+  $("fin-auto").addEventListener("click", ()=>{ finOverride = null; $("fin-monto").classList.remove("overridden"); $("fin-auto").classList.add("hidden"); updateFin(); });
+  $("obra-meses").addEventListener("input", ()=>updateGantt());
+  document.querySelectorAll("#amort-chips .chip").forEach(ch=>{
+    ch.addEventListener("click", ()=>{
+      amortPlazo = +ch.dataset.plazo;
+      document.querySelectorAll("#amort-chips .chip").forEach(x=>x.classList.toggle("on", x===ch));
+      updateAmort();
+    });
+  });
+
+  const today = new Date();
+  $("in-fecha").value = today.toLocaleDateString("es-MX",{day:"2-digit",month:"long",year:"numeric"});
+
+  recalc(true);
+})();
+</script>
+</body>
+</html>
