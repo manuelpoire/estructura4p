@@ -187,6 +187,76 @@
 
   footer{max-width:1060px; margin:0 auto; padding:0 24px 40px; font-size:11px; color:var(--muted);}
 
+  /* ===================== móvil ===================== */
+  @media(max-width:640px){
+    header{padding:18px 20px;}
+    .brand h1{font-size:17px; letter-spacing:.26em;}
+    header .sub{font-size:10.5px;}
+    .wrap{padding:16px 12px 40px;}
+
+    .hero{padding:26px 18px 24px; border-radius:14px;}
+    .herologo{width:150px;}
+    .herotitle{font-size:23px;}
+    .herotag{font-size:13.5px;}
+    .herodesc{font-size:12.8px;}
+    .heroquote{padding:14px 16px;}
+    .simhead{flex-direction:column; gap:2px;}
+
+    .inputcard{padding:15px 16px;}
+    .biginput input{font-size:26px;}
+
+    /* inputs a 16px: evita el auto-zoom de iOS al enfocar */
+    input.num, .biginput input, .projcard input{font-size:16px;}
+
+    /* tablas del desglose → formato tarjeta */
+    section.block table, section.block tbody, section.block tr, section.block td{display:block; width:100%;}
+    section.block thead{display:none;}
+    section.block tr{display:grid; grid-template-columns:1fr 1fr; gap:2px 10px; padding:10px 14px; border-bottom:1px solid #f0eee9; align-items:center;}
+    section.block tr:last-child{border-bottom:none;}
+    section.block td{border:none; padding:0;}
+    section.block td.concept{grid-column:1/3; font-size:13px;}
+    section.block td.unidad{display:none;}
+    section.block td:nth-child(3){grid-row:2; grid-column:1;}
+    section.block td:nth-child(4){grid-row:2; grid-column:2;}
+    section.block td.total{grid-row:3; grid-column:1/3; text-align:right; font-size:13.5px; padding-top:2px;}
+    section.block td:nth-child(3) .cellin::before{content:"Cantidad"; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-right:auto;}
+    section.block td:nth-child(4) .cellin::before{content:"P.U."; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-right:auto;}
+    section.block .cellin{justify-content:flex-end; gap:6px; width:100%;}
+    input.num{width:104px; padding:7px 8px;}
+    input.num.qty{width:96px;}
+    .subhead{padding:12px 14px 4px;}
+    .blockhead{padding:12px 14px;}
+    .note{margin:10px 14px 2px;}
+
+    .rescard{padding:18px 18px;}
+    .rescard .amt{font-size:27px;}
+
+    /* financiamiento */
+    .finctrl{flex-direction:column; align-items:stretch; gap:12px;}
+    .chips{flex-wrap:wrap;}
+    .chip{padding:10px 13px;}
+    #fin-monto{width:150px;}
+    .fincard .pago{font-size:21px;}
+    .amorthead{flex-direction:column; align-items:flex-start;}
+    .amortwrap{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+    .amorttable{min-width:520px;}
+    .amorttable td{font-size:11px; padding:6px 8px;}
+    .amorttable th{padding:7px 8px;}
+
+    /* gantt */
+    .gruler{grid-template-columns:0 1fr 0; gap:0;}
+    .gline{display:none;}
+    .gr{display:flex; flex-wrap:wrap; gap:1px 8px; padding:5px 0;}
+    .gr .gname{flex:1; text-align:left; font-size:11.5px; font-weight:600;}
+    .gr .gamt{text-align:right;}
+    .gr .gtrack{flex-basis:100%; order:3;}
+
+    .actions{flex-direction:column;}
+    button.act{width:100%; padding:13px 18px;}
+    .pcard h3{font-size:12.5px;}
+    footer{padding:0 14px 30px;}
+  }
+
   @media print{
     *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
     @page{margin:14mm 12mm;}
